@@ -17,6 +17,9 @@ height: 100px; background: orange;
 table{
   width: 600px;
 }
+table tr:first-child {
+  background: orange; color: white;
+}
 table tr td{
   padding: 10px;
 }
