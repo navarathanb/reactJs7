@@ -3,40 +3,58 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      data: [
+        {
+          "name": "James",
+          "id": 100,
+          "email": "james@gmail.com",
+          "mobile": 32423423
+        },
+        {
+          "name": "Kishore",
+          "id": 101,
+          "email": "kishore@gmail.com",
+          "mobile": 4534534534
+        },
+        {
+          "name": "Patrick",
+          "id": 102,
+          "email": "partic@gmail.com",
+          "mobile": 54654633
+        },
+        {
+          "name": "Kumar",
+          "id": 103,
+          "email": "kumar@gmail.com",
+          "mobile": 56456445
+        }
+
+      ]
+    }
+  }
   render() {
     return (
       <div className="main">
-        <Header/>
-        <Content />
-        <Footer />
+        <table border="1">
+          <tr><td>Name</td><td>Email</td><td>Mobile</td><td>Id</td></tr>
+          {this.state.data.map((emp,ind) => <Table data = {emp} key={ind}/>)}
+        </table>
       </div>
     );
   }
 }
-class Header extends React.Component {
-  render() {
-    return (
-      <div className = "header">
-        <h2>Header Content</h2>
-      </div>
-    )
-  }
-}
-class Content extends React.Component {
-  render() {
-    return (
-      <div className = "content">
-        <h2>Content Section</h2>
-      </div>
-    )
-  }
-}
-class Footer extends React.Component {
+class Table extends React.Component {
   render(){
     return(
-      <div className="footer">
-        <h2>Footer Content</h2>
-      </div>
+      <tr>
+        <td>{this.props.data.name}</td>
+        <td>{this.props.data.email}</td>
+        <td>{this.props.data.mobile}</td>
+        <td>{this.props.data.id}</td>
+      </tr>
     )
   }
 }

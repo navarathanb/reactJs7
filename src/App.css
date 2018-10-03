@@ -14,3 +14,9 @@ height: 100px; background: orange;
   height: 100px; background: gray;
   color:white;
 }
+table{
+  width: 600px;
+}
+table tr td{
+  padding: 10px;
+}
