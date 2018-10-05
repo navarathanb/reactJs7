@@ -38,6 +38,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="main">
+        <h1> {this.props.catagory} - {this.props.header}</h1>
+        <h2>
+          {this.props.tableName}  
+        </h2>
         <table border="1">
           <tr><td>Name</td><td>Email</td><td>Mobile</td><td>Id</td></tr>
           {this.state.data.map((emp,ind) => <Table data = {emp} key={ind}/>)}
@@ -57,6 +61,11 @@ class Table extends React.Component {
       </tr>
     )
   }
+}
+
+App.defaultProps = {
+  catagory: "Students cse batch",
+  header: "SSVS Institute"
 }
 
 
