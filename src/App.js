@@ -32,13 +32,17 @@ class App extends React.Component {
           "mobile": 56456445
         }
 
-      ]
+      ],
+      catagory: "Students cse batch",
+      header: "SSVS Institute"
+
     }
   }
   render() {
     return (
       <div className="main">
-        <h1> {this.props.catagory} - {this.props.header}</h1>
+        {/* <h1> {this.state.catagory} - {this.state.header}</h1> */}
+        <Headerdata cat = {this.state.catagory} head = {this.state.header}/> {/* calling the class*/}
         <h2>
           {this.props.tableName}  
         </h2>
@@ -62,11 +66,16 @@ class Table extends React.Component {
     )
   }
 }
-
-App.defaultProps = {
-  catagory: "Students cse batch",
-  header: "SSVS Institute"
+class Headerdata extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.cat} - {this.props.head}</h1>
+      </div>
+    )
+  }
 }
+
 
 
 export default App;
