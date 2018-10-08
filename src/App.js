@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import ReactDom from 'react-dom';
 import './App.css';
 
 class App extends React.Component {
@@ -37,15 +37,44 @@ class App extends React.Component {
       header: "SSVS Institute"
 
     }
+    this.setStateUpdate = this.setStateUpdate.bind(this);//user definded function
+    this.setForceUpdate = this.setForceUpdate.bind(this);
+    this.setFindDomNode = this.setFindDomNode.bind(this);
   }
+  setStateUpdate() {
+    var name = "Students ECE Branch";
+    this.setState({catagory : name}); // setState() is to update state data.
+  }
+  setForceUpdate() {
+    this.forceUpdate();
+  }
+
+  setFindDomNode() {
+    var h3access = document.getElementById("head");
+    ReactDom.findDOMNode(h3access).style.background = "red";
+  }
+
   render() {
+    var mycss = {
+      width: '150px',
+      height: '35px',
+      background: 'red',fontSize:'20px',
+      color: 'white'
+    }
     return (
       <div className="main">
+        <input type="submit" value="setState" onClick = {this.setStateUpdate} style = {mycss} />
+        <input type="submit" value="findDomNode" onClick = {this.setFindDomNode} style = {mycss} />
+       
+
         {/* <h1> {this.state.catagory} - {this.state.header}</h1> */}
         <Headerdata cat = {this.state.catagory} head = {this.state.header}/> {/* calling the class*/}
         <h2>
           {this.props.tableName}  
         </h2>
+        <h3 id="head">
+          Square root of 3 : {Math.sqrt(3)}
+        </h3>
         <table border="1">
           <tr><td>Name</td><td>Email</td><td>Mobile</td><td>Id</td></tr>
           {this.state.data.map((emp,ind) => <Table data = {emp} key={ind}/>)}
