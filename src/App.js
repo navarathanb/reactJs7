@@ -26,18 +26,22 @@ class App extends Component {
     alert("Note deleting");
   }
   save() {
-    alert("Saved");
+    alert(this.newText.value);
   }
   renderForm() {
     return(
       <div className = "note">
         <form>
-          <textarea id="textarea" />
+          <textarea id="textarea" ref={input => this.newText = input} />
           <button onClick = {this.save} id="save"><FaFloppyO /></button>
         </form>
       </div>
     )
   }
+  // function(input) {
+  //   this.newText = input
+  //   return newText;
+  // }
   renderDisplay() {
     return (
       <div className ='note'>
