@@ -2,22 +2,43 @@ import React, { Component } from 'react';
 import './App.css';
 import FaPencil from 'react-icons/lib/fa/pencil';
 import FaTrash from 'react-icons/lib/fa/trash';
+import FaFloppyO from 'react-icons/lib/fa/floppy-o';
 
 
 class App extends Component {
  constructor(props) {
-   super(props) 
+   super(props)
+   this.state = {
+     editing: false
+   }
+   
    this.edit = this.edit.bind(this);
    this.remove = this.remove.bind(this);
+   this.save = this.save.bind(this);
   }
   edit() {
-    alert("Editing note");
+    this.setState({
+      editing: true
+    })
   }
   remove()
-{
-  alert("Note deleting");
-}
-  render() {
+  {
+    alert("Note deleting");
+  }
+  save() {
+    alert("Saved");
+  }
+  renderForm() {
+    return(
+      <div className = "note">
+        <form>
+          <textarea id="textarea" />
+          <button onClick = {this.save} id="save"><FaFloppyO /></button>
+        </form>
+      </div>
+    )
+  }
+  renderDisplay() {
     return (
       <div className ='note'>
         <p>Sticky Note</p>
@@ -28,6 +49,10 @@ class App extends Component {
       </div>
     )
   }
+  render() {
+    return this.state.editing ? this.renderForm() : this.renderDisplay()
+  }
+
 }
 
 export default App;
