@@ -1,3 +1,6 @@
+* {
+  margin: 0px; padding: 0px;
+}
 body {
   margin: 0;
   padding: 0;
@@ -11,4 +14,32 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+div.note {
+  height: 150px;
+  width: 150px;
+  background: yellow;
+  margin: 2px;
+  position: absolute;
+  box-shadow: 5px 5px 10px gray;
+}
+
+div.note p {
+  font-size: 16px;
+  padding: 5px;
+  font-family: cursive;
+}
+
+div.note .btns {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+div.note #edit {
+  background: orange; color: white; border: 0px; margin: 2px;padding: 2px;
+}
+div.note #remove {
+  background: red; color: white; border: 0px; margin: 2px;padding: 2px;
 }

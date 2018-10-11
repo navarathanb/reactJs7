@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FaPencil from 'react-icons/lib/fa/pencil';
+import FaTrash from 'react-icons/lib/fa/trash';
+
 
 class App extends Component {
+ constructor(props) {
+   super(props) 
+   this.edit = this.edit.bind(this);
+   this.remove = this.remove.bind(this);
+  }
+  edit() {
+    alert("Editing note");
+  }
+  remove()
+{
+  alert("Note deleting");
+}
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className ='note'>
+        <p>Sticky Note</p>
+        <span className ="btns">
+            <button onClick = {this.edit} id="edit"><FaPencil /></button>
+            <button onClick = {this.remove} id="remove"><FaTrash /></button>
+        </span>
       </div>
-    );
+    )
   }
 }
 
