@@ -48,13 +48,13 @@ class App extends React.Component {
         </h2>
         <table border="1">
           <tr><td>Name</td><td>Email</td><td>Mobile</td><td>Id</td></tr>
-          {this.state.data.map((emp,ind) => <Table data = {emp} key={ind}/>)}
+          {this.state.data.map((emp,ind) => <Row data = {emp} key={ind}/>)}
         </table>
       </div>
     );
   }
 }
-class Table extends React.Component {
+class Row extends React.Component {
   render(){
     return(
       <tr>
