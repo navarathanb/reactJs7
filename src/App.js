@@ -1,62 +1,42 @@
-import React, { Component } from 'react';
-import './App.css';
-import FaPencil from 'react-icons/lib/fa/pencil';
-import FaTrash from 'react-icons/lib/fa/trash';
-import FaFloppyO from 'react-icons/lib/fa/floppy-o';
-
+import React, {Component} from 'react'
+import Sticky from './Sticky'
 
 class App extends Component {
- constructor(props) {
-   super(props)
-   this.state = {
-     editing: false
-   }
-   
-   this.edit = this.edit.bind(this);
-   this.remove = this.remove.bind(this);
-   this.save = this.save.bind(this);
-  }
-  edit() {
-    this.setState({
-      editing: true
-    })
-  }
-  remove()
-  {
-    alert("Note deleting");
-  }
-  save() {
-    alert(this.newText.value);
-  }
-  renderForm() {
-    return(
-      <div className = "note">
-        <form>
-          <textarea id="textarea" ref={input => this.newText = input} />
-          <button onClick = {this.save} id="save"><FaFloppyO /></button>
-        </form>
-      </div>
-    )
-  }
-  // function(input) {
-  //   this.newText = input
-  //   return newText;
-  // }
-  renderDisplay() {
-    return (
-      <div className ='note'>
-        <p>Sticky Note</p>
-        <span className ="btns">
-            <button onClick = {this.edit} id="edit"><FaPencil /></button>
-            <button onClick = {this.remove} id="remove"><FaTrash /></button>
-        </span>
-      </div>
-    )
-  }
-  render() {
-    return this.state.editing ? this.renderForm() : this.renderDisplay()
-  }
+    constructor(props) {
+        super(props)
+        this.state = {
+            stickies: [
+                {
+                    id: 0,
+                    sticky: "Reminder at 5PM"
+                },
+                {
+                    id: 1,
+                    sticky: "Call James at 9PM"
+                },
+                {
+                    id: 2,
+                    sticky: "Write Notes"
+                }
 
+            ]
+        }
+        this.eachSticky = this.eachSticky.bind(this);
+    }
+    eachSticky(sticky,i) {
+        return (
+            <Sticky key = {i} index = {i} >
+                {sticky.sticky}
+            </Sticky>
+        )
+    }
+
+    render() {
+        return (
+            <div className = "stickies">
+                {this.state.stickies.map(this.eachSticky)}
+            </div>
+        )
+    }
 }
-
-export default App;
+export default App
