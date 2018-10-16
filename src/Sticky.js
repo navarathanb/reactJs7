@@ -25,17 +25,23 @@ class Sticky extends Component {
   }
   remove()
   {
-    alert("Note deleting");
+    // alert("Note deleting");
+    this.props.onRemove(this.props.index)
   }
-  save() {
-    alert(this.newText.value);
+  save(e) {
+    // alert(this.newText.value);
+    e.preventDefault();
+    this.props.onChange(this.newText.value, this.props.index)
+    this.setState({
+      editing: false
+    })
   }
   renderForm() {
     return(
       <div className = "note">
-        <form>
+        <form onSubmit = {this.save}>
           <textarea id="textarea" ref={input => this.newText = input} />
-          <button onClick = {this.save} id="save"><FaFloppyO /></button>
+          <button id="save"><FaFloppyO /></button>
         </form>
       </div>
     )

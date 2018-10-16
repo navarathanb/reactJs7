@@ -22,14 +22,31 @@ class App extends Component {
             ]
         }
         this.eachSticky = this.eachSticky.bind(this);
+        this.update = this.update.bind(this);
+        this.remove = this.remove.bind(this)
     }
+    update(newText, i) {
+        this.setState( prevState => ({
+            stickies: prevState.stickies.map(sticky => (sticky.id !== i) ? sticky: {...sticky, sticky: newText})
+        }))
+    }    
+    remove(id){
+        this.setState( prevState => ({
+            stickies : prevState.stickies.filter( sticky => sticky.id !== id)
+        }))
+    }
+
     eachSticky(sticky,i) {
         return (
-            <Sticky key = {i} index = {i} >
+            <Sticky key = {i} index = {i} 
+            onChange = {this.update}
+            onRemove = {this.remove}
+            >
                 {sticky.sticky}
             </Sticky>
         )
     }
+
 
     render() {
         return (
