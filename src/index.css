@@ -21,7 +21,7 @@ div.note {
   width: 150px;
   background: yellow;
   margin: 5px;
-  /* position: absolute; */
+  position: relative;
   box-shadow: 5px 5px 10px gray;
   float: left;
 }
