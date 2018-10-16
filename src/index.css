@@ -54,3 +54,8 @@ div.note #textarea {
   border: 0px;
   box-shadow: 5px 5px 10px gray;
 }
+div.stickies #plus {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}

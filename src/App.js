@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Sticky from './Sticky'
+import FaPlus from 'react-icons/lib/fa/plus'
+
 
 class App extends Component {
     constructor(props) {
@@ -23,7 +25,8 @@ class App extends Component {
         }
         this.eachSticky = this.eachSticky.bind(this);
         this.update = this.update.bind(this);
-        this.remove = this.remove.bind(this)
+        this.remove = this.remove.bind(this);
+        this.add = this.add.bind(this);
     }
     update(newText, i) {
         this.setState( prevState => ({
@@ -35,7 +38,9 @@ class App extends Component {
             stickies : prevState.stickies.filter( sticky => sticky.id !== id)
         }))
     }
+    add(){
 
+    }
     eachSticky(sticky,i) {
         return (
             <Sticky key = {i} index = {i} 
@@ -51,6 +56,7 @@ class App extends Component {
     render() {
         return (
             <div className = "stickies">
+                <button id="plus" onClick = {this.add}><FaPlus /> </button>
                 {this.state.stickies.map(this.eachSticky)}
             </div>
         )
