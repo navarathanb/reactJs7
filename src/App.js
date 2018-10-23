@@ -7,26 +7,13 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            stickies: [
-                {
-                    id: 0,
-                    sticky: "Reminder at 5PM"
-                },
-                {
-                    id: 1,
-                    sticky: "Call James at 9PM"
-                },
-                {
-                    id: 2,
-                    sticky: "Write Notes"
-                }
-
-            ]
+            stickies: []
         }
         this.eachSticky = this.eachSticky.bind(this);
         this.update = this.update.bind(this);
         this.remove = this.remove.bind(this);
         this.add = this.add.bind(this);
+        this.nextId = this.nextId.bind(this);
     }
     update(newText, i) {
         this.setState( prevState => ({
@@ -38,8 +25,19 @@ class App extends Component {
             stickies : prevState.stickies.filter( sticky => sticky.id !== id)
         }))
     }
-    add(){
-
+    add(text){
+        this.setState( prevState => ({
+            stickies: [
+                ...prevState.stickies, {
+                    id: this.nextId(),
+                    sticky: text
+                }
+            ]
+        }))
+    }
+    nextId() {
+        this.uniqueId = this.uniqueId || 0
+        return this.uniqueId++
     }
     eachSticky(sticky,i) {
         return (
@@ -56,7 +54,7 @@ class App extends Component {
     render() {
         return (
             <div className = "stickies">
-                <button id="plus" onClick = {this.add}><FaPlus /> </button>
+                <button id="plus" onClick = {this.add.bind(null,"New Note")}><FaPlus /> </button>
                 {this.state.stickies.map(this.eachSticky)}
             </div>
         )
