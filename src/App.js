@@ -50,7 +50,7 @@ class App extends Component {
     }
     eachSticky(sticky,i) {
         return (
-            <Sticky key = {i} index = {i} 
+            <Sticky key = {i} index = {sticky.id} 
             onChange = {this.update}
             onRemove = {this.remove}
             >
