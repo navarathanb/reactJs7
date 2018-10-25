@@ -15,6 +15,15 @@ class App extends Component {
         this.add = this.add.bind(this);
         this.nextId = this.nextId.bind(this);
     }
+    componentDidMount() {
+      var self = this
+      if(this.props.count) {
+        fetch(`https://baconipsum.com/api/?type=all-meat&senteses=${this.props.count}`)
+        .then(response => response.json())
+        .then(json => json[0].split('. ').forEach(sentense => self.add(sentense.substring(0,25))) )
+      }
+    }
+
     update(newText, i) {
         this.setState( prevState => ({
             stickies: prevState.stickies.map(sticky => (sticky.id !== i) ? sticky: {...sticky, sticky: newText})
