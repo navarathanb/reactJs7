@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="res"></div>
+    <div id="template"></div>
+    <script>
+        var link = ["http://www.google.com","test.html","test2.html"];
+        var data = '';
+        var str = "james";
+        var val1 = 34;
+        var val2 = 20;
+        for(i=0;i<link.length;i++){
+            if(link[i].endsWith('.html')){
+               var text = link[i].split('.')[0];
+                data += '<a href="'+link[i]+'">'+text+'</a><br><br>';
+            }
+        }
+        document.getElementById("res").innerHTML = data;
+        function disp(){
+            return "This is a function";
+        }
+        var res = `<h2>My name is ${str}</h2>
+        Welcome Mr ${str}
+        Value1 = ${val1}, value2 = ${val2}, sum = ${val1+val2}
+        <br>
+        Function OP: ${disp()}
+        `;
+
+        document.getElementById("template").innerHTML = res;
+    
+    </script>
+</body>
+</html>

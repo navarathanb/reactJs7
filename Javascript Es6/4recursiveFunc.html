@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp"><input type="submit" value="submit" onclick="recur()">
+    <div id="res"></div>
+    <script>
+       function recur(){
+           var inp = document.getElementById("inp").value;
+            function disp(val){
+                if(val <= 0 ){
+                    return 1;
+                }
+                else{
+                    return (val * disp(val-1));// 5 * 4 * 3 * 2 * 1 * 1
+                }
+            }    
+            document.getElementById("res").innerHTML = disp(inp);
+       }
+    </script>
+</body>
+</html>
